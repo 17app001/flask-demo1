@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PM2.5全台資訊</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='./css/main.css')}}">
     <link rel="stylesheet" href="{{url_for('static',filename='./css/pm25.css')}}">
 
 </head>
@@ -13,7 +14,13 @@
 <body>
     <div id="container">
         <h1>PM2.5全台資訊</h1>
-        <p>{{date}}</p>
+        <p id="date">{{date}}</p>
+        <form action="/pm25" method="POST">
+            <input type="submit" value="排序">
+        </form>
+        <p>
+            <a href="/">首頁</a>
+        </p>
         <table border="1">
             <thead>
                 <tr>
@@ -32,9 +39,7 @@
                 {% endfor %}
             </tbody>
         </table>
-        <p>
-            <a href="/">首頁</a>
-        </p>
+
     </div>
 </body>
 
