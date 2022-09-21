@@ -55,7 +55,7 @@ def get_bmi(name, height, weight):
 
 @app.route('/stock')
 def get_stock():
-    # 爬蟲
+    # # 爬蟲
     stocks = [
         {'分類': '日經指數', '指數': '22,920.30'},
         {'分類': '韓國綜合', '指數': '2,304.59'},
@@ -63,7 +63,9 @@ def get_stock():
         {'分類': '上海綜合', '指數': '3,380.68'}
     ]
 
-    return render_template('./stock.html', date=get_date(), stocks=stocks)
+    date = get_date()
+
+    return render_template('./stock.html', date=date,stocks=stocks)
 
 
 print(get_date())
