@@ -1,4 +1,6 @@
 from flask import Flask, render_template
+from pm25 import get_pm25
+
 
 app = Flask(__name__)
 
@@ -65,8 +67,16 @@ def get_stock():
 
     date = get_date()
 
-    return render_template('./stock.html', date=date,stocks=stocks)
+    return render_template('./stock.html', date=date, stocks=stocks)
 
 
-print(get_date())
-app.run(debug=True)
+@app.route('/pm25')
+def pm25():
+    date = get_date()
+    columns, values = get_pm25()
+    return render_template('./pm25.html', **locals())
+
+
+if __name__ == '__main__':
+    # pm25()
+    app.run(debug=True)

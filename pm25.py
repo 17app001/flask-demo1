@@ -4,10 +4,11 @@ url = 'https://data.epa.gov.tw/api/v2/aqx_p_02?api_key=e8dd42e6-9b8b-43f8-991e-b
 
 
 def get_pm25():
-    df = pd.read_csv(url).dropna()['site	county	pm25	datacreationdate'.split()]
-    # print(df)
+    df = pd.read_csv(url).dropna()['county site pm25	datacreationdate'.split()]
 
     return df.columns.tolist(), df.values.tolist()
 
 
-print(get_pm25())
+if __name__ == '__main__':
+
+    print(get_pm25())
